@@ -27,7 +27,7 @@ public class Main {
         while (true) {
             System.out.print("Please enter the annual interest rate: ");
             annualInterest = scanner.nextFloat();
-            if (annualInterest > 0 && annualInterest <= 30 )
+            if (annualInterest > 0 && annualInterest <= 30)
                 break;
             System.out.println("Please enter a value between 0.00 and 30.00.");
         }
@@ -35,7 +35,7 @@ public class Main {
         while (true) {
             System.out.print("Please enter the length of the loan (in years): ");
             period = scanner.nextInt();
-            if (period >= 1 && period <= 30)
+            if (period > 0 && period <= 30)
                 break;
             System.out.println("Please enter a value between 0 and 30.");
         }
