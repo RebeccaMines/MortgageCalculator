@@ -10,15 +10,16 @@ public class Main {
         final byte monthsInYear = 12;
         final byte percent = 100;
 
-        int principal = 0;
-        float annualInterest = 0;
-        int period = 0;
+        int principal;
+        float annualInterest;
+        int period;
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner input;
+        input = new Scanner(System.in);
 
         while (true) {
             System.out.print("Please enter the principal: ");
-            principal = scanner.nextInt();
+            principal = input.nextInt();
             if (principal >= 1000 && principal <= 1_000_000)
                 break;
             System.out.println("Please enter a value between 1K and 1M.");
@@ -26,7 +27,7 @@ public class Main {
 
         while (true) {
             System.out.print("Please enter the annual interest rate: ");
-            annualInterest = scanner.nextFloat();
+            annualInterest = input.nextFloat();
             if (annualInterest > 0 && annualInterest <= 30)
                 break;
             System.out.println("Please enter a value between 0.00 and 30.00.");
@@ -34,7 +35,7 @@ public class Main {
 
         while (true) {
             System.out.print("Please enter the length of the loan (in years): ");
-            period = scanner.nextInt();
+            period = input.nextInt();
             if (period > 0 && period <= 30)
                 break;
             System.out.println("Please enter a value between 0 and 30.");
@@ -42,7 +43,8 @@ public class Main {
 
         int numOfPayments = (period * 12);
         float monthlyInterest = ((annualInterest / percent) / monthsInYear);
-        double mortgagePayment = (principal * (monthlyInterest * ((Math.pow(1 + monthlyInterest, numOfPayments) / ((Math.pow(1 + monthlyInterest, numOfPayments) - 1))))));
+        double mortgagePayment = principal * (monthlyInterest * ((Math.pow(1 + monthlyInterest, numOfPayments)
+                                                / ((Math.pow(1 + monthlyInterest, numOfPayments) - 1)))));
 
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgagePayment);
         System.out.println("Your monthly mortgage payment is: " + mortgageFormatted);
